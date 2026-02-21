@@ -13,14 +13,17 @@ exports.addProduct = async (req, res) => {
       )
       console.log(telegramId, username);
       
-      // await User.findOneAndUpdate(
-      //    { telegramId },
-      //    {
-      //       username,
-      //       $addToSet: { savedProducts: product._id }
-      //    },
-      //    { upsert: true }
-      // );
+      if(telegramId){
+         await User.findOneAndUpdate(
+            { telegramId },
+            {
+               username,
+               $addToSet: { savedProducts: product._id }
+            },
+            { upsert: true }
+         );
+      }
+      
       res.status(200).json(product);
 
 
