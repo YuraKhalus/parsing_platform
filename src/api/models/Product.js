@@ -7,7 +7,11 @@ const productSchema = new mongoose.Schema({
     min: Number,
     max: Number,
   },
-  url: String,
+  priseHistory: [{
+    prise: Number,
+    date: {type: Date, default: Date.now}
+  }],
+  url: {type: String, required: true, unique: true},
   variants: Array,
   lastParsed: { type: Date, default: Date.now },
 });

@@ -2,10 +2,11 @@ const TelegramBot = require('node-telegram-bot-api');
 const axios = require('axios')
 
 const API_URL = 'http://localhost:3000/api'
+const bot = new TelegramBot(process.env.TELEGRAM_BOT_TOKEN, { polling: true });
 
 
-const startBot = (token) => {
-   const bot = new TelegramBot(token, { polling: true });
+const startBot = () => {
+  
 
    const mainMenu = {
       reply_markup: {
@@ -62,7 +63,7 @@ const startBot = (token) => {
    })
 
 }
-module.exports = {startBot}
+module.exports = {startBot, bot};
 
 
 
